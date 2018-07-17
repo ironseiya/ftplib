@@ -6,7 +6,7 @@ import configparser
 import shutil
 import ast
 import zipfile
-
+import logging
 
 class DataFileFtp:
     # 要上传文件路径
@@ -37,6 +37,12 @@ class DataFileFtp:
 
     def __init__(self):
 
+        logging.basicConfig(level=logging.WARNING,
+                            filename='./log/log.txt',
+                            filemode='w',
+                            format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s')
+
+        logging.info("程序")
         configname = 'ftp.ini'
         config = configparser.ConfigParser()
         config.read(configname)
